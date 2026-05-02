@@ -1,1 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking Paket</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f6f6;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.logo {
+  width: 50px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* SEARCH */
+.search {
+  padding: 15px;
+  background: white;
+}
+
+.search input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.search button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #16a34a;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+/* CARD */
+.card {
+  margin: 15px;
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  display: none;
+}
+
+/* STATUS */
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* INFO */
+.info {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ROUTE */
+.route {
+  margin-top: 10px;
+  padding: 10px;
+  background: #ecfdf5;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* TIMELINE */
+.timeline {
+  margin-top: 15px;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #22c55e;
+}
+
+.step {
+  margin-left: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  left: -23px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.step-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.step-time {
+  font-size: 12px;
+  color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <!-- GANTI logo.png dengan logo kamu -->
+  <img src="logo.png" class="logo">
+  <div class="title">Tracking Paket</div>
+</div>
+
+<div class="search">
+  <input type="text" id="resi" placeholder="Masukkan nomor resi">
+  <button onclick="cek()">Lacak Paket</button>
+</div>
+
+<!-- DATA RESI -->
+
+<div id="JT001" class="card">
+
+  <div class="status">DALAM PENGIRIMAN</div>
+
+  <div class="info">
+    <b>No Resi:</b> JT001<br>
+    <b>Pengirim:</b> Andi<br>
+    <b>Penerima:</b> Budi<br>
+    <b>Alamat:</b> Jl. Mawar No.10, Surabaya<br>
+    <b>Estimasi:</b> 06 Mei 2026
+  </div>
+
+  <div class="route">
+    📍 Jakarta → Semarang → Surabaya → Rumah Penerima
+  </div>
+
+  <div class="timeline">
+
+    <div class="step">
+      <div class="step-title">Paket Diterima</div>
+      <div class="step-time">03 Mei 2026 - 09:00</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Packing Paket</div>
+      <div class="step-time">03 Mei 2026 - 10:00</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Dikirim ke Gudang</div>
+      <div class="step-time">03 Mei 2026 - 14:00</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Transit Semarang</div>
+      <div class="step-time">04 Mei 2026 - 02:00</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Dalam Perjalanan</div>
+      <div class="step-time">04 Mei 2026 - 08:00</div>
+    </div>
+
+    <div class="step">
+      <div class="step-title">Menuju Alamat Penerima</div>
+      <div class="step-time">04 Mei 2026 - 10:00</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function cek() {
+  let input = document.getElementById("resi").value;
+
+  let cards = document.getElementsByClassName("card");
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].style.display = "none";
+  }
+
+  let hasil = document.getElementById(input);
+  if (hasil) {
+    hasil.style.display = "block";
+  } else {
+    alert("Resi tidak ditemukan");
+  }
+}
+</script>
+
+</body>
+</html>
