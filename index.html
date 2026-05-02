@@ -17,15 +17,26 @@ body {
   background: linear-gradient(135deg, #16a34a, #22c55e);
   color: white;
   padding: 15px;
-  text-align: center;
 }
 
-.logo {
-  width: 50px;
-  margin-bottom: 5px;
+/* BRAND (LOGO + NAMA) */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.title {
+.brand img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  background: white;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.brand span {
   font-size: 18px;
   font-weight: bold;
 }
@@ -137,12 +148,16 @@ body {
 
 <body>
 
+<!-- HEADER + LOGO -->
 <div class="header">
-  <!-- GANTI logo.png dengan logo kamu -->
-  <img src="logo.png" class="logo">
-  <div class="title">Tracking Paket</div>
+  <div class="brand">
+    <!-- 🔁 GANTI logo.png DENGAN LOGO KAMU -->
+    <img src="logo.png" alt="Logo">
+    <span>EXPEDISI ANDA</span>
+  </div>
 </div>
 
+<!-- SEARCH -->
 <div class="search">
   <input type="text" id="resi" placeholder="Masukkan nomor resi">
   <button onclick="cek()">Lacak Paket</button>
@@ -204,7 +219,7 @@ body {
 
 <script>
 function cek() {
-  let input = document.getElementById("resi").value;
+  let input = document.getElementById("resi").value.toUpperCase();
 
   let cards = document.getElementsByClassName("card");
   for (let i = 0; i < cards.length; i++) {
